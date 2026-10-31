@@ -3,8 +3,10 @@ import { Engine, HIDDEN_ATTR, STYLE_ID, buildHideCss, validSelectors } from '../
 import { BUNDLED_RULES } from '../src/rules/store';
 import type { SiteRules } from '../src/rules/types';
 import fixture from './fixtures/onlinekhabar-article.html?raw';
+import setopatiFixture from './fixtures/setopati-article.html?raw';
 
 const onlinekhabar = BUNDLED_RULES.sites.find((s) => s.id === 'onlinekhabar')!;
+const setopati = BUNDLED_RULES.sites.find((s) => s.id === 'setopati')!;
 
 function load(html: string) {
   const parsed = new DOMParser().parseFromString(html, 'text/html');
@@ -94,6 +96,19 @@ describe('onlinekhabar rules on an article page', () => {
     expect(document.getElementById(STYLE_ID)).toBeNull();
     expect(document.querySelector(`[${HIDDEN_ATTR}]`)).toBeNull();
     expect(isHidden(document.querySelector('.ok-sidebar-ad'))).toBe(false);
+  });
+});
+
+describe('setopati rules on an article page', () => {
+  beforeEach(() => load(setopatiFixture));
+
+  it('hides desktop ad slots and keeps the article visible', () => {
+    engine = new Engine(document, setopati);
+    engine.start();
+
+    for (const sel of ['#top-ad', '#inline-ad', '#sidebar-ad', '#item-ad', '#top-banner', '#main-ad', '#full-ad', '#mobile-ad']) expect(isHidden(document.querySelector(sel)), sel).toBe(true);
+    for (const sel of ['.site-header', '.news-big-title', '#para-1', '#para-2']) expect(isHidden(document.querySelector(sel)), sel).toBe(false);
+    expect(engine.getCount()).toBe(8);
   });
 });
 

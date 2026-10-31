@@ -3,7 +3,7 @@
  * content-script matches are fixed in the manifest; remote rule updates only
  * change selectors for these domains.
  */
-export const SUPPORTED_DOMAINS = ['onlinekhabar.com'];
+export const SUPPORTED_DOMAINS = ['onlinekhabar.com', 'setopati.com'];
 
 export const MATCH_PATTERNS = SUPPORTED_DOMAINS.flatMap((d) => [
   `*://${d}/*`,

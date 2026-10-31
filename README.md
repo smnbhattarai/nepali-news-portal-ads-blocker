@@ -3,7 +3,7 @@
 A Chrome + Firefox extension that hides ads and popups on Nepali websites using
 CSS and DOM rules (no network blocking). See [PLAN.md](PLAN.md) for the design.
 
-Phase 1 supports **onlinekhabar.com**.
+Supported sites: **onlinekhabar.com**, **setopati.com**.
 
 ## Install from a release
 

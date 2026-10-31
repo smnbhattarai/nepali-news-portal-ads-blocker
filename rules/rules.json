@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "updated": "2026-10-16",
+  "version": 2,
+  "updated": "2026-10-31",
   "sites": [
     {
       "id": "onlinekhabar",
@@ -25,6 +25,11 @@
       ],
       "popups": [{ "overlay": ".ok_roadblock", "close": ".ok_roadblok_skip" }],
       "unlockScroll": true
+    },
+    {
+      "id": "setopati",
+      "domains": ["setopati.com"],
+      "hide": [".desktop-bigyaapan-only", ".mobile-bigyaapan-only",".bigyaapan-item", ".top-bigyaapan", ".main-bigyaapan", ".full-bigyaapan"]
     }
   ]
 }
